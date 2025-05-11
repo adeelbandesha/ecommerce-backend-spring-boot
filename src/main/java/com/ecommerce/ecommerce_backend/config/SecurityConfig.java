@@ -14,7 +14,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) // Disable CSRF for testing (optional but recommended for APIs)
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/**").permitAll() // ✅ Allow all /api/ requests without login
-                .requestMatchers("/**").permitAll()
+                .requestMatchers("/uploaded_images/**").permitAll()
                 .anyRequest().authenticated() // Other requests → Require login
             )
             .httpBasic(); // OR .formLogin(); you can remove this for API
