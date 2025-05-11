@@ -36,6 +36,10 @@ public class Product {
     @JsonManagedReference
     private List<Review> reviews = new ArrayList<>();
 
+     // Product.java
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Feature> features = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
