@@ -19,7 +19,7 @@ public class ReviewService {
     @Autowired
     private ProductRepository productRepository;
 
-    public Review createReview(String content, int rating, Long productId) {
+    public Review createReview(String content, int rating, Long productId, String name) {
 
         // ✅ Fetch product → throw error if not found
         Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
@@ -29,6 +29,7 @@ public class ReviewService {
         review.setContent(content);
         review.setRating(rating);
         review.setProduct(product);
+        review.setName(name);
 
         return reviewRepository.save(review);
     }

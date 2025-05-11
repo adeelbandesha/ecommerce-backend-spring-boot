@@ -20,13 +20,16 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public PageResponse<Product> getProducts(int page, int limit, String search, String category) {
+    public PageResponse<Product> getProducts(int page, int limit, String search, String category, Boolean featured) {
         Pageable pageable = PageRequest.of(page, limit, Sort.by("id").descending());
 
         // Simple search logic → you can make advanced later
         Page<Product> productPage;
 
-        if (search != null && category != null) {
+        if(featured != null){
+            productPage = productRepository.findByFeatured(featured, pageable);
+        }
+        else if (search != null && category != null) {
             productPage = productRepository.findByNameContainingAndDescriptionContainingAndCategory(search, search, category, pageable);
         } else if (search != null) {
             productPage = productRepository.findByNameContainingOrDescriptionContaining(search, search, pageable);

@@ -4,6 +4,7 @@ public class ReviewRequest {
     private String content;
     private int rating;
     private Long productId;
+    private String name;
 
     // ✅ Add getters and setters (or use Lombok)
     public String getContent() { return content; }
@@ -14,4 +15,7 @@ public class ReviewRequest {
 
     public Long getProductId() { return productId; }
     public void setProductId(Long productId) { this.productId = productId; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }

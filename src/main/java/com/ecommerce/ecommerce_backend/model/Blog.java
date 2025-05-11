@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -19,6 +20,18 @@ public class Blog {
     private Long id;
 
     private String title;
+
     private String cover;
+
+    private String category;
+
+    @Column(columnDefinition = "TEXT") // to support HTML content
     private String content;
+
+    private LocalDateTime datePosted;
+
+    @PrePersist
+    public void prePersist() {
+        this.datePosted = LocalDateTime.now();
+    }
 }

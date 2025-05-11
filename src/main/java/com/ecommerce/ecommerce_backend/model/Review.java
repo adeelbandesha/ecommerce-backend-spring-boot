@@ -23,6 +23,7 @@ public class Review {
 
     private String content;
     private int rating;
+    private String name;
 
     private LocalDateTime createdAt;
 

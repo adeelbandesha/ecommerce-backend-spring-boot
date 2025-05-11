@@ -27,6 +27,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private String category;
+    private Boolean featured;
 
     private LocalDateTime createdAt;
 
@@ -50,6 +51,8 @@ public class Product {
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
+        this.featured = false;
     }
+    
 
 }

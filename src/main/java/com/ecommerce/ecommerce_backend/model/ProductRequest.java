@@ -11,6 +11,7 @@ public class ProductRequest {
     private String description;
     private String category;
     private double price;
+    private boolean featured;
 
     // No need for images here → we will receive separately
 }
