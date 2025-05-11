@@ -51,7 +51,7 @@ public class Product {
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
-        this.featured = false;
+        // this.featured = false;
     }
     
 

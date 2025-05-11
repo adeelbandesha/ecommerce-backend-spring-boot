@@ -49,6 +49,7 @@ public Product createProductWithImages(
         @RequestPart("description") String description,
         @RequestPart("price") String price,  // ✅ as String → Fixes content-type issue
         @RequestPart("category") String category,
+        @RequestPart("featured") String featured,
         @Parameter(description = "Product Images", content = @Content(mediaType = "multipart/form-data",
                 schema = @Schema(type = "string", format = "binary")))
         @RequestPart("images") List<MultipartFile> images
@@ -61,6 +62,7 @@ public Product createProductWithImages(
     
     // ✅ convert price to BigDecimal safely
     product.setPrice(new BigDecimal(price));
+    product.setFeatured(Boolean.parseBoolean(featured));
 
     for (MultipartFile file : images) {
         String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
